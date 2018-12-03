@@ -1,0 +1,2 @@
+# homeassistant
+My Smart Home
