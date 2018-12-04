@@ -1,0 +1,42 @@
+# VSCode
+.vscode
+
+# Logs
+logs
+*.log
+
+# Python cache
+__pycache__
+*.pyc
+
+# Other
+*.uuid
+*.conf
+*.db
+*.db-journal
+*.log
+*.noload
+*.txt
+*.sqlite
+*.xml
+*.backup
+.ip_authenticated.yaml
+.config_entries.json
+*.google.token
+.google.token
+.spotify-token-cache
+.storage
+home-assistant.env
+home-assistant.*
+known_devices.yaml
+entity_registry.yaml
+secrets.yaml
+zones.yaml
+google_calendars.yaml
+components
+python
+deps
+tts
+www/icons
+www/floorplans
+.cloud

@@ -1,0 +1,24 @@
+sun.sun:
+  friendly_name: Zon
+device_tracker.60facd80845f:
+  friendly_name: iPhone Mayla
+device_tracker.bc6c21a75f16:
+  friendly_name: iPhone Rick
+device_tracker.2078f0266a63:
+  hidden: true
+group.batterylevels:
+  icon: mdi:battery-charging
+sensor.puck:
+  icon: mdi:battery-charging
+sensor.dimmer_keuken:
+  icon: mdi:battery-charging
+sensor.dimmer_hogetafel:
+  icon: mdi:battery-charging
+sensor.keuken_sensor:
+  icon: mdi:battery-charging
+sensor.gang_sensor:
+  icon: mdi:battery-charging
+sensor.hogetafel_schakelaar:
+  icon: mdi:battery-charging
+sensor.waterornament_schakelaar:
+  icon: mdi:battery-charging

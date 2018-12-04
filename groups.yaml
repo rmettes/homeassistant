@@ -1,0 +1,111 @@
+Keuken Medium:
+    - light.keuken_1
+    - light.keuken_3
+    - light.keuken_5
+Keuken Low:
+    - light.keuken_2
+    - light.keuken_4
+Keuken:
+  entities:
+    - light.keuken_1
+    - light.keuken_2
+    - light.keuken_3
+    - light.keuken_4
+    - light.keuken_5
+    - switch.keuken_werklicht
+
+Hoge Tafel:
+  entities:
+    - light.hogetafel_1
+    - light.hogetafel_2
+
+Zithoek:
+  entities:
+    - light.zithoek
+    - light.lichtbol
+    - light.glazenkast
+    - switch.tv_meubel
+Buiten Voor:
+  entities:
+    - light.buiten_1
+    - light.buiten_2
+Buiten Achter:
+  entities:
+    - light.buiten_3
+    - light.buiten_4
+Buiten:
+  entities:
+    - group.buiten_voor
+    - group.buiten_achter
+Gang:
+  entities:
+    - light.gang_1
+    - light.gang_2
+    - light.gang_3
+Voordeur:
+  entities:
+    - light.voordeur_1
+    - light.voordeur_2
+Zolder:
+  entities:
+    - light.zolder_1
+Woonkamer:
+  view: yes
+  entities:
+    - scene.keuken
+    - scene.hoge_tafel
+    - scene.zithoek
+    - scene.woonkamer_gedimd
+    - scene.woonkamer_uit
+    - group.keuken
+    - group.hoge_tafel
+    - group.zithoek
+PiHole:
+  entities:
+    - sensor.pihole_ads_blocked_today
+Battery Levels:
+  entities:
+    - sensor.puck
+    - sensor.dimmer_hogetafel
+    - sensor.keuken_sensor
+    - sensor.gang_sensor
+    - sensor.waterornament_schakelaar
+    - sensor.hogetafel_schakelaar
+Wireless Router:
+  entities:
+    - sensor.wireless_router_archer_c5_bytes_received
+    - sensor.wireless_router_archer_c5_bytes_sent
+    - sensor.wireless_router_archer_c5_kbytesec_received
+    - sensor.wireless_router_archer_c5_kbytesec_sent
+    - sensor.wireless_router_archer_c5_packets_received
+    - sensor.wireless_router_archer_c5_packets_sent
+    - sensor.wireless_router_archer_c5_packetssec_received
+    - sensor.wireless_router_archer_c5_packetssec_sent
+Statistics:
+  entities:
+    - sensor.mayla_at_home
+    - sensor.mayla_at_work
+    - sensor.rick_at_home
+    - sensor.rick_at_work
+    - sensor.lights_woonkamer_on
+Tech:
+  view: yes
+  entities:
+    - group.pihole
+    - group.battery_levels
+    - group.wireless_router
+    - group.statistics
+    - media_player.chromecast
+Huis:
+  view: yes
+  entities:
+    - group.buiten
+    - group.gang
+    - group.voordeur
+    - scene.buiten_aan
+    - scene.buiten_uit
+    - scene.gang_aan
+    - scene.gang_uit
+    - scene.voordeur_laag
+    - scene.voordeur_hoog
+    - scene.voordeur_uit

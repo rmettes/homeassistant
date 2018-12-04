@@ -1,0 +1,333 @@
+- id: asoijeunakaisps
+  alias: Melding - Bak buitenzetten
+  trigger:
+    platform: time
+    hours: 7
+    minutes: 32
+    seconds: 0
+  condition:
+  - condition: template
+    value_template: "
+{{ ('Gft' in states.calendar.inzamelkalender_hvc.attributes.message or 'Plastic' in states.calendar.inzamelkalender_hvc.attributes.message) and now().strftime('%D') == strptime(states.calendar.inzamelkalender_hvc.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%D') }}"
+  action:
+  - data:
+      target: !secret telephone_rick
+      message: 'Vergeet je niet de {{ states.calendar.inzamelkalender_hvc.attributes.message }} bak buiten te zetten?'
+    service: notify.sms
+- id: asoijeunakaispasdli823
+  alias: Melding - Later thuis
+  trigger:
+    platform: time
+    hours: 17
+    minutes: 15
+    seconds: 0
+  condition:
+  - condition: state
+    entity_id: device_tracker.rick_mettes
+    state: 'Paramelt'
+  - condition: state
+    entity_id: device_tracker.mayla_
+    state: 'home'
+  action:
+  - data:
+      target: !secret telephone_mayla
+      message: 'Rick is later thuis, hij is nu  nog op t werk'
+    service: notify.sms
+- id: alsdflkyedk
+  alias: Iedereen Weg - Lichten Uit
+  trigger:
+  - entity_id: group.all_devices
+    from: home
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: group.woonkamer
+    state: 'on'
+  action:
+  - data:
+      entity_id: scene.woonkamer_uit
+    service: scene.turn_on
+  - data:
+      entity_id: group.gang
+    service: light.turn_off
+- id: ijiuywekjf
+  alias: Buitenverlichting aan bij zonsondergang
+  trigger:
+  - below: '-3.95'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition:
+  - after: '12:00:00'
+    condition: time
+  action:
+  - data:
+      entity_id: scene.buiten_aan
+    service: scene.turn_on
+- id: qwernmd
+  alias: Buitenverlichting uit om 1 uur
+  trigger:
+    platform: time
+    hours: 1
+    minutes: 0
+    seconds: 0
+  action:
+  - data:
+      entity_id: scene.buiten_uit
+    service: scene.turn_on
+- id: qwernasdlifyue
+  alias: Zet automations voor de dag aan
+  trigger:
+    platform: time
+    hours: 1
+    minutes: 0
+    seconds: 0
+  action:
+  - data:
+      entity_id: automation.goedemorgen_werkdag
+    service: automation.turn_on
+- id: qwueio
+  alias: Start Film
+  trigger:
+  - entity_id: sensor.chromecast_movie
+    from: 'no'
+    platform: state
+    to: 'yes'
+  condition:
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  action:
+  - data:
+      entity_id: scene.film_kijken
+    service: scene.turn_on
+- id: qiionaluenflsdi
+  alias: Start Serie
+  trigger:
+  - entity_id: sensor.chromecast_tvshow
+    from: 'no'
+    platform: state
+    to: 'yes'
+  condition:
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  action:
+  - data:
+      entity_id: scene.serie_kijken
+    service: scene.turn_on
+- id: io8uafj
+  alias: Pauze Chromecast
+  trigger:
+  - entity_id: sensor.chromecast_movie
+    from: 'yes'
+    platform: state
+    to: 'no'
+  - entity_id: sensor.chromecast_tvshow
+    from: 'yes'
+    platform: state
+    to: 'no'
+  condition:
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  action:
+  - data:
+      entity_id: scene.film_pause
+    service: scene.turn_on
+- id: oiasdflkjasd
+  alias: Schakel keuken werklicht in
+  trigger:
+  - entity_id: group.keuken_medium
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.keuken_low
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.keuken_werklicht
+    service: switch.turn_on
+- id: asdfi3whbfalif39d
+  alias: Schakel keuken werklicht uit
+  trigger:
+  - entity_id: group.keuken_medium
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: switch.keuken_werklicht
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.keuken_werklicht
+    service: switch.turn_off
+- id: oi8u823uhavjkna
+  alias: Goedemorgen werkdag
+  trigger:
+  - entity_id: group.gang
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  - before: '12:00:00'
+    condition: time
+  - after: '07:00:00'
+    condition: time
+  action:
+  - data:
+      entity_id: scene.woonkamer_gedimd
+    service: scene.turn_on
+  - data:
+      entity_id: automation.goedemorgen_werkdag
+    service: automation.turn_off 
+- id: poijnjhyt
+  alias: Lichten aan bij zonsondergang
+  trigger:
+  - entity_id: sensor.dusk
+    from: 'no'
+    platform: state
+    to: 'yes'
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  - condition: state
+    entity_id: group.hoge_tafel
+    state: 'off'
+  - condition: state
+    entity_id: group.zithoek
+    state: 'off'
+  - condition: state
+    entity_id: sensor.chromecast_movie
+    state: 'no'
+  - condition: state
+    entity_id: sensor.chromecast_tvshow
+    state: 'no'
+  - after: '12:00:00'
+    condition: time
+  action:
+  - data:
+      entity_id: scene.woonkamer_gedimd
+    service: scene.turn_on
+- id: poijnjhytifaslkj
+  alias: Lichten uit bij zonsopgang
+  trigger:
+  - entity_id: sensor.dusk
+    from: 'yes'
+    platform: state
+    to: 'no'
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - data:
+      entity_id: scene.woonkamer_uit
+    service: scene.turn_on
+- id: oijhfkjdnckasdfjlkjd
+  alias: Voordeur hoog
+  trigger:
+  - entity_id: device_tracker.mayla_
+    from: not_home
+    platform: state
+    to: home
+  - entity_id: device_tracker.rick_mettes
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  action:
+  - data:
+      entity_id: scene.voordeur_hoog
+    service: scene.turn_on
+- id: oijhfkjdnckd
+  alias: Thuis Komen
+  trigger:
+  - entity_id: device_tracker.mayla_
+    from: not_home
+    platform: state
+    to: home
+  - entity_id: device_tracker.rick_mettes
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: group.woonkamer
+    state: 'off'
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  - condition: state
+    entity_id: sensor.chromecast_movie
+    state: 'no'
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.homecoming
+- id: cancelhomecoming
+  alias: Cancel Homecoming AutoOff
+  trigger:
+  - entity_id: group.gang
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: group.woonkamer
+    state: 'on'
+  - condition: state
+    entity_id: script.homecoming
+    state: 'on'
+  action:
+  - service: script.turn_off
+    data:
+      entity_id: script.homecoming
+- id: voordeurautoturnoff
+  alias: Voordeur Auto Laag
+  trigger:
+  - event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.voordeur_hoog
+    event_type: call_service
+    platform: event
+  action:
+  - delay: 00:10:00
+  - data:
+      entity_id: scene.voordeur_laag
+    service: scene.turn_on
+- id: '1534148700757'
+  alias: Buitenverlichting laag
+  trigger:
+  - entity_id: group.woonkamer
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: group.buiten
+    state: 'on'
+  - condition: state
+    entity_id: sensor.chromecast_movie
+    state: 'no'
+  action:
+  - alias: ''
+    data:
+      entity_id: scene.buiten_laag
+    service: scene.turn_on

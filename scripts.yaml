@@ -1,0 +1,19 @@
+homecoming:
+  alias: "Welkom thuis"
+  sequence:
+# Zet de lichten in huis aan
+  - data:
+      entity_id: scene.woonkamer_gedimd
+    service: scene.turn_on
+  - data:
+      entity_id: scene.gang_aan
+    service: scene.turn_on
+# Wacht 20 minuten
+  - delay: 00:20:00
+# Zet de boel weer uit
+  - data:
+      entity_id: scene.woonkamer_uit
+    service: scene.turn_on
+  - data:
+      entity_id: scene.gang_uit
+    service: scene.turn_on
