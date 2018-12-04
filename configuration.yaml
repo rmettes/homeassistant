@@ -75,6 +75,7 @@ binary_sensor:
 switch:
   - platform: flux
     disable_brightness_adjust: True
+    stop_colortemp: 1500
     lights:
       - light.zolder_1
 
