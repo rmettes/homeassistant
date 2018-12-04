@@ -47,11 +47,11 @@ Turn off livingroom lights when it's light enough outside.
 Set the light at the frontdoor high when someone arrives at home. This will be automatically turn down again by: Voordeur Auto Laag
 ### Voordeur Auto Laag
 Turn down the lights at the frontdoor after 10 minutes when they were set to high.
-## Thuis Komen
+### Thuis Komen
 Reanimate the home (aka start homecoming script) when someone comes home.
-## Cancel Homecoming AutoOff
+### Cancel Homecoming AutoOff
 Cancel the automatic shutdown when motion is detected in the hallway (this is a solution to false positives).
-## Buitenverlichting laag
+### Buitenverlichting laag
 When the livingroom light's are turned off set gardenlight's low.
 
 ## Scripts
