@@ -65,6 +65,10 @@
   - data:
       entity_id: scene.buiten_aan
     service: scene.turn_on
+  - data:
+      entity_id: switch.flexschakelaar_1
+    service: switch.turn_on
+
 - id: qwernmd
   alias: Buitenverlichting uit om 1 uur
   trigger:
@@ -76,6 +80,9 @@
   - data:
       entity_id: scene.buiten_uit
     service: scene.turn_on
+  - data:
+      entity_id: switch.flexschakelaar_1
+    service: switch.turn_off
 - id: qwernasdlifyue
   alias: Zet automations voor de dag aan
   trigger:
@@ -312,6 +319,53 @@
   - data:
       entity_id: scene.voordeur_laag
     service: scene.turn_on
+
+- id: kerstboomdelayedoff
+  alias: Kerstboom delayed off
+  trigger:
+  - entity_id: group.keuken
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: group.hoge_tafel
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: group.zithoek
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: group.keuken
+    state: 'off'
+  - condition: state
+    entity_id: group.hoge_tafel
+    state: 'off'
+  - condition: state
+    entity_id: group.zithoek
+    state: 'off'
+  - condition: state
+    entity_id: sensor.dusk
+    state: 'yes'
+  action:
+  - delay: 00:01:00
+  - data:
+      entity_id: switch.flexschakelaar_2
+    service: switch.turn_off
+
+- id: kerstboomon
+  alias: Kerstoom aan
+  trigger:
+  - entity_id: group.woonkamer
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: switch.flexschakelaar_2
+    service: switch.turn_on
+
 - id: '1534148700757'
   alias: Buitenverlichting laag
   trigger:
