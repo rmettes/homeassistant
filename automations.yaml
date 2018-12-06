@@ -348,6 +348,12 @@
   - condition: state
     entity_id: sensor.dusk
     state: 'yes'
+  - condition: state
+    entity_id: sensor.chromecast_movie
+    state: 'no'
+  - condition: state
+    entity_id: sensor.chromecast_tvshow
+    state: 'no'
   action:
   - delay: 00:01:00
   - data:
