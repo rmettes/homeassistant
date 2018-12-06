@@ -66,7 +66,7 @@
       entity_id: scene.buiten_aan
     service: scene.turn_on
   - data:
-      entity_id: switch.flexschakelaar_1
+      entity_id: switch.flexschakelaar_2
     service: switch.turn_on
 
 - id: qwernmd
@@ -81,7 +81,7 @@
       entity_id: scene.buiten_uit
     service: scene.turn_on
   - data:
-      entity_id: switch.flexschakelaar_1
+      entity_id: switch.flexschakelaar_2
     service: switch.turn_off
 - id: qwernasdlifyue
   alias: Zet automations voor de dag aan
@@ -351,7 +351,7 @@
   action:
   - delay: 00:01:00
   - data:
-      entity_id: switch.flexschakelaar_2
+      entity_id: switch.flexschakelaar_1
     service: switch.turn_off
 
 - id: kerstboomon
@@ -363,7 +363,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: switch.flexschakelaar_2
+      entity_id: switch.flexschakelaar_1
     service: switch.turn_on
 
 - id: '1534148700757'
