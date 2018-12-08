@@ -51,6 +51,9 @@
   - data:
       entity_id: group.gang
     service: light.turn_off
+  - data:
+      entity_id: switch.flexschakelaar_1
+    service: switch.turn_off
 - id: ijiuywekjf
   alias: Buitenverlichting aan bij zonsondergang
   trigger:
@@ -323,28 +326,11 @@
 - id: kerstboomdelayedoff
   alias: Kerstboom delayed off
   trigger:
-  - entity_id: group.keuken
-    from: 'on'
-    platform: state
-    to: 'off'
-  - entity_id: group.hoge_tafel
-    from: 'on'
-    platform: state
-    to: 'off'
-  - entity_id: group.zithoek
+  - entity_id: group.woonkamer
     from: 'on'
     platform: state
     to: 'off'
   condition:
-  - condition: state
-    entity_id: group.keuken
-    state: 'off'
-  - condition: state
-    entity_id: group.hoge_tafel
-    state: 'off'
-  - condition: state
-    entity_id: group.zithoek
-    state: 'off'
   - condition: state
     entity_id: sensor.dusk
     state: 'yes'
