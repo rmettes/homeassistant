@@ -104,10 +104,6 @@
     from: 'no'
     platform: state
     to: 'yes'
-  condition:
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   action:
   - data:
       entity_id: scene.film_kijken
@@ -119,10 +115,6 @@
     from: 'no'
     platform: state
     to: 'yes'
-  condition:
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   action:
   - data:
       entity_id: scene.serie_kijken
@@ -138,10 +130,6 @@
     from: 'yes'
     platform: state
     to: 'no'
-  condition:
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   action:
   - data:
       entity_id: scene.film_pause
@@ -187,9 +175,6 @@
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   - before: '12:00:00'
     condition: time
   - after: '07:00:00'
@@ -204,10 +189,10 @@
 - id: poijnjhyt
   alias: Lichten aan bij zonsondergang
   trigger:
-  - entity_id: sensor.dusk
-    from: 'no'
+  - entity_id: group.in_het_donker
+    from: 'off'
     platform: state
-    to: 'yes'
+    to: 'on'
   condition:
   - condition: state
     entity_id: group.all_devices
@@ -233,10 +218,10 @@
 - id: poijnjhytifaslkj
   alias: Lichten uit bij zonsopgang
   trigger:
-  - entity_id: sensor.dusk
-    from: 'yes'
+  - entity_id: group.in_het_donker
+    from: 'on'
     platform: state
-    to: 'no'
+    to: 'off'
   condition:
   - condition: state
     entity_id: group.all_devices
@@ -256,10 +241,6 @@
     from: not_home
     platform: state
     to: home
-  condition:
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   action:
   - data:
       entity_id: scene.voordeur_hoog
@@ -279,9 +260,6 @@
   - condition: state
     entity_id: group.woonkamer
     state: 'off'
-  - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
   - condition: state
     entity_id: sensor.chromecast_movie
     state: 'no'
@@ -332,9 +310,6 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: sensor.dusk
-    state: 'yes'
-  - condition: state
     entity_id: sensor.chromecast_movie
     state: 'no'
   - condition: state
@@ -377,3 +352,25 @@
     data:
       entity_id: scene.buiten_laag
     service: scene.turn_on
+
+- id: 'inhetdonkeraan'
+  alias: Automations in het donker aan
+  trigger:
+  - entity_id: sensor.dusk
+    from: 'no'
+    platform: state
+    to: 'yes'
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.in_het_donker
+
+- id: 'inhetdonkeruit'
+  alias: Automations in het donker uit
+  trigger:
+  - entity_id: sensor.dusk
+    from: 'yes'
+    platform: state
+    to: 'no'
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.in_het_donker
