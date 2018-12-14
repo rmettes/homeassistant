@@ -109,3 +109,20 @@ Huis:
     - scene.voordeur_laag
     - scene.voordeur_hoog
     - scene.voordeur_uit
+# Automation Groups
+# Only when dark outside
+In het Donker:
+  entities:
+    - automation.buitenverlichting_aan_bij_zonsondergang
+    - automation.buitenverlichting_laag
+    - automation.buitenverlichting_uit_om_1_uur
+    - automation.cancel_homecoming_autooff
+    - automation.goedemorgen_werkdag
+    - automation.kerstboom_delayed_off
+    # - automation.lichten_aan_bij_zonsondergang
+    - automation.start_film
+    - automation.start_serie
+    - automation.pauze_chromecast
+    - automation.thuis_komen
+    - automation.voordeur_auto_laag
+    - automation.voordeur_hoog
