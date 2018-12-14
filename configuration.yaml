@@ -39,6 +39,9 @@ http:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
+# Log events into InfluxDB
+influxdb:
+
 # Discover some devices automatically
 discovery:
 
