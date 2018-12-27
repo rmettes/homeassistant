@@ -1,5 +1,3 @@
-- platform: pi_hole
-  host: pi.hole
 - platform: history_stats
   name: Rick at Home
   entity_id: device_tracker.rick_mettes
