@@ -22,20 +22,15 @@ Hoge Tafel:
 Zithoek:
   entities:
     - light.zithoek
-    - light.lichtbol
+    - light.hue_go
     - light.glazenkast
     - switch.tv_meubel
-Buiten Voor:
-  entities:
-    - light.buiten_1
-    - light.buiten_2
 Buiten Achter:
   entities:
     - light.buiten_3
     - light.buiten_4
 Buiten:
   entities:
-    - group.buiten_voor
     - group.buiten_achter
 Gang:
   entities:

@@ -32,8 +32,6 @@
         state: on
         brightness: 10
         transition: 15
-      group.buiten_voor:
-        state: off
   - name: Serie kijken
     entities:
       group.keuken:
@@ -45,10 +43,6 @@
       light.zithoek:
         state: off
       group.buiten_achter:
-        state: on
-        brightness: 10
-        transition: 15
-      group.buiten_voor:
         state: on
         brightness: 10
         transition: 15
@@ -68,19 +62,12 @@
         transition: 15
       switch.tv_meubel:
         state: on
-      group.buiten_voor:
-        state: on
-        brightness: 120
-        transition: 15
       group.buiten_achter:
         state: on
         brightness: 100
         transition: 15
   - name: Buiten aan
     entities:
-      group.buiten_voor:
-        state: on
-        brightness: 120
       group.buiten_achter:
         state: on
         brightness: 100
