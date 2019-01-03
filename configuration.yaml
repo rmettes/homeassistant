@@ -81,6 +81,7 @@ switch:
     stop_colortemp: 1500
     lights:
       - light.zolder_1
+      - light.zolder_2
 
 # Life360 Activity Tracker
 device_tracker:

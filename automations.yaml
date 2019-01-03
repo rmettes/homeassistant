@@ -164,6 +164,28 @@
   - data:
       entity_id: switch.keuken_werklicht
     service: switch.turn_off
+- id: oiasdasdflflkjasd
+  alias: Schakel Hue Go in
+  trigger:
+  - entity_id: group.zithoek
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: light.hue_go
+    service: light.turn_on
+- id: asdfi3whbfaasdlfjlif39d
+  alias: Schakel Hue Go uit
+  trigger:
+  - entity_id: group.zithoek
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+  - data:
+      entity_id: light.hue_go
+    service: light.turn_off
 - id: oi8u823uhavjkna
   alias: Goedemorgen werkdag
   trigger:

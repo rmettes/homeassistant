@@ -22,7 +22,7 @@ Hoge Tafel:
 Zithoek:
   entities:
     - light.zithoek
-    - light.hue_go
+      #    - light.hue_go
     - light.glazenkast
     - switch.tv_meubel
 Buiten Achter:
@@ -44,6 +44,7 @@ Voordeur:
 Zolder:
   entities:
     - light.zolder_1
+    - light.zolder_2
 Woonkamer:
   view: yes
   entities:
