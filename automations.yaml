@@ -396,3 +396,31 @@
   action:
     service: homeassistant.turn_off
     entity_id: group.in_het_donker
+
+- id: 'dingdonglicht'
+  alias: Voordeur hoog na aanbellen
+  trigger:
+  - entity_id: binary_sensor.deurbel
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: scene.voordeur_hoog
+    service: scene.turn_on
+
+- id: 'dingdongfilm'
+  alias: Film op pauze na aanbellen
+  trigger:
+  - entity_id: binary_sensor.deurbel
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: sensor.chromecast_movie
+    state: 'yes'
+  action:
+  - data:
+      entity_id: media_player.woonkamer
+    service: media_player.media_pause
