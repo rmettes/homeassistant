@@ -111,6 +111,7 @@
       group.voordeur:
         state: on
         brightness: 100
+        transition: 5
   - name: Voordeur Uit
     entities:
       group.voordeur:
