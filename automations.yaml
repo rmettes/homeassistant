@@ -271,11 +271,9 @@
   alias: Thuis Komen
   trigger:
   - entity_id: device_tracker.mayla_
-    from: not_home
     platform: state
     to: home
   - entity_id: device_tracker.rick_mettes
-    from: not_home
     platform: state
     to: home
   condition:
