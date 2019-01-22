@@ -10,6 +10,7 @@ Some files are missing in this repo due security or privacy reasons, these files
 
 ## Used services / modules
 My smart home is heavily based on Ikea's Tradfri devices but I'm also using some other external stuff:
+- esphomeyaml
 - Google Calendar
 - Google Chromecast
 - Sun
@@ -53,20 +54,20 @@ Reanimate the home (aka start homecoming script) when someone comes home.
 Cancel the automatic shutdown when motion is detected in the hallway (this is a solution to false positives).
 ### Buitenverlichting laag
 When the livingroom light's are turned off set gardenlight's low.
+### Voordeur hoog na aanbellen
+When the doorbell rings, set lights at the frontdoor to 100%.
+### Film op pauze na aanbellen
+When the doorbell rings and a movie plays on the chromecast, pause it.
 
 ## Scripts
 ### Welkom thuis
 Turns the light's in the hallway and livingroom on, wait 20 minutes and turn them off again. This script will be cancelled when there is motion detected in the hallway.
 
 ## Sensors
-### PiHole
-Shows the number of blocked requests
-### History sensors
-Shows percentage of time (per week) someone is:
-- At work
-- At home
-
-Also displays how many hours the light's are turned on in the livingroom (weekly).
+### Deurbel
+Displays if someone is ringing the doorbell (created with esphomeyaml)
+### Wireless Router
+Shows the up- / download of the main router.
 ### dusk
 Returns yes when it's outside dark enough to put some light's on inside.
 ### chromecast_movie

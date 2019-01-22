@@ -323,38 +323,6 @@
       entity_id: scene.voordeur_laag
     service: scene.turn_on
 
-- id: kerstboomdelayedoff
-  alias: Kerstboom delayed off
-  trigger:
-  - entity_id: group.woonkamer
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: sensor.chromecast_movie
-    state: 'no'
-  - condition: state
-    entity_id: sensor.chromecast_tvshow
-    state: 'no'
-  action:
-  - delay: 00:01:00
-  - data:
-      entity_id: switch.flexschakelaar_1
-    service: switch.turn_off
-
-- id: kerstboomon
-  alias: Kerstoom aan
-  trigger:
-  - entity_id: group.woonkamer
-    from: 'off'
-    platform: state
-    to: 'on'
-  action:
-  - data:
-      entity_id: switch.flexschakelaar_1
-    service: switch.turn_on
-
 - id: '1534148700757'
   alias: Buitenverlichting laag
   trigger:

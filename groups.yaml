@@ -62,13 +62,6 @@ Battery Levels:
     - sensor.gang_sensor
     - sensor.waterornament_schakelaar
     - sensor.hogetafel_schakelaar
-Statistics:
-  entities:
-    - sensor.mayla_at_home
-    - sensor.mayla_at_work
-    - sensor.rick_at_home
-    - sensor.rick_at_work
-    - sensor.lights_woonkamer_on
 Tech:
   view: yes
   entities:
@@ -83,6 +76,7 @@ Huis:
     - group.buiten
     - group.gang
     - group.voordeur
+    - group.deurbel
     - scene.buiten_aan
     - scene.buiten_uit
     - scene.gang_aan
@@ -116,3 +110,7 @@ Wireless Router:
     - sensor.wireless_router_archer_c5_packets_sec_received
     - sensor.wireless_router_archer_c5_packets_sec_sent
     - sensor.wireless_router_archer_c5_packets_sent
+Deurbel:
+  entities:
+    - binary_sensor.deurbel
+    - switch.bel_relais
