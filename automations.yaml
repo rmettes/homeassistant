@@ -392,3 +392,20 @@
   - data:
       entity_id: media_player.woonkamer
     service: media_player.media_pause
+
+- id: 'dingdongmelding'
+  alias: Stuur melding bij aanbellen en niemand thuis
+  trigger:
+  - entity_id: binary_sensor.deurbel
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: not_home
+  action:
+  - data:
+      target: !secret telephone_rick
+      message: 'Er wordt thuis aangebeld'
+    service: notify.sms
