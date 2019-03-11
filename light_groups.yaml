@@ -1,0 +1,58 @@
+- platform: group
+  name: Keuken
+  entities:
+    - light.keuken_1
+    - light.keuken_2
+    - light.keuken_3
+    - light.keuken_4
+    - light.keuken_5
+
+- platform: group  
+  name: Keuken Low
+  entities:
+    - light.keuken_2
+    - light.keuken_4
+
+- platform: group
+  name: Keuken Medium
+  entities:
+    - light.keuken_1
+    - light.keuken_3
+    - light.keuken_5
+
+- platform: group
+  name: Hoge Tafel
+  entities:
+    - light.hogetafel_1
+    - light.hogetafel_2
+
+- platform: group
+  name: Lage Tafel
+  entities:
+    - light.zithoek
+    - light.glazenkast
+
+- platform: group
+  name: Achtertuin
+  entities:
+    - light.buiten_3
+    - light.buiten_4
+
+- platform: group
+  name: Gang
+  entities:
+    - light.gang_1
+    - light.gang_2
+    - light.gang_3
+
+- platform: group
+  name: Voordeur
+  entities:
+    - light.voordeur_1
+    - light.voordeur_2
+
+- platform: group
+  name: Zolder
+  entities:
+    - light.zolder_1
+    - light.zolder_2

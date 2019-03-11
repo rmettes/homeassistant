@@ -1,106 +1,4 @@
-Keuken Medium:
-    - light.keuken_1
-    - light.keuken_3
-    - light.keuken_5
-Keuken Low:
-    - light.keuken_2
-    - light.keuken_4
-Keuken:
-  entities:
-    - light.keuken_1
-    - light.keuken_2
-    - light.keuken_3
-    - light.keuken_4
-    - light.keuken_5
-    - switch.keuken_werklicht
-
-Hoge Tafel:
-  entities:
-    - light.hogetafel_1
-    - light.hogetafel_2
-
-Zithoek:
-  entities:
-    - light.zithoek
-    - light.glazenkast
-    - switch.tv_meubel
-Buiten Achter:
-  entities:
-    - light.buiten_3
-    - light.buiten_4
-Buiten:
-  entities:
-    - group.buiten_achter
-Gang:
-  entities:
-    - light.gang_1
-    - light.gang_2
-    - light.gang_3
-Voordeur:
-  entities:
-    - light.voordeur_1
-    - light.voordeur_2
-Zolder:
-  entities:
-    - light.zolder_1
-    - light.zolder_2
-Woonkamer:
-  view: yes
-  entities:
-    - scene.keuken
-    - scene.hoge_tafel
-    - scene.zithoek
-    - scene.woonkamer_gedimd
-    - scene.woonkamer_uit
-    - group.keuken
-    - group.hoge_tafel
-    - group.zithoek
-Battery Levels:
-  entities:
-    - sensor.puck
-    - sensor.keuken_sensor
-    - sensor.gang_sensor
-    - sensor.waterornament_schakelaar
-    - sensor.hogetafel_schakelaar
-Tech:
-  view: yes
-  entities:
-    - group.pihole
-    - group.battery_levels
-    - group.wireless_router
-    - group.statistics
-    - media_player.chromecast
-Huis:
-  view: yes
-  entities:
-    - group.buiten
-    - group.gang
-    - group.voordeur
-    - group.deurbel
-    - scene.buiten_aan
-    - scene.buiten_uit
-    - scene.gang_aan
-    - scene.gang_uit
-    - scene.voordeur_laag
-    - scene.voordeur_hoog
-    - scene.voordeur_uit
-# Automation Groups
-# Only when dark outside
-In het Donker:
-  entities:
-    - automation.buitenverlichting_aan_bij_zonsondergang
-    - automation.buitenverlichting_laag
-    - automation.buitenverlichting_uit_om_1_uur
-    - automation.cancel_homecoming_autooff
-    - automation.goedemorgen_werkdag
-    - automation.kerstboom_delayed_off
-    - automation.start_film
-    - automation.start_serie
-    - automation.pauze_chromecast
-    - automation.thuis_komen
-    - automation.voordeur_auto_laag
-    - automation.voordeur_hoog
-Wireless Router:
+Draadloze Router:
   entities:
     - sensor.wireless_router_archer_c5_bytes_received
     - sensor.wireless_router_archer_c5_bytes_sent
@@ -110,7 +8,29 @@ Wireless Router:
     - sensor.wireless_router_archer_c5_packets_sec_received
     - sensor.wireless_router_archer_c5_packets_sec_sent
     - sensor.wireless_router_archer_c5_packets_sent
+
 Deurbel:
   entities:
     - binary_sensor.deurbel
     - switch.bel_relais
+
+Batterij Levels:
+  entities:
+    - sensor.puck
+    - sensor.keuken_sensor
+    - sensor.gang_sensor
+    - sensor.waterornament_schakelaar
+    - sensor.hogetafel_schakelaar
+
+# Only when dark outside
+In het Donker:
+  entities:
+    - automation.buitenverlichting_aan_bij_zonsondergang
+    - automation.buitenverlichting_uit_om_1_uur
+    - automation.cancel_homecoming_autooff
+    - automation.start_film
+    - automation.start_serie
+    - automation.pauze_chromecast
+    - automation.thuis_komen
+    - automation.voordeur_auto_laag
+    - automation.voordeur_hoog

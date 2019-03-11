@@ -1,0 +1,41 @@
+- platform: template
+  sensors:
+    dusk:
+      friendly_name: "Schemer"
+      value_template: >-
+        {{ (is_state('weather.dark_sky','clear') 
+            and state_attr('sun.sun','elevation')|float < 7)
+            or state_attr('sun.sun','elevation')|float < 3.5 }}
+
+- platform: template
+  sensors:
+    chromecast_playing:
+      friendly_name: "Chromecast Playing"
+      value_template: >-
+        {{ is_state('media_player.woonkamer', 'playing') 
+            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis"]
+            or state_attr('media_player.woonkamer','app_name') in ["Plex"]
+            and state_attr('media_player.woonkamer','media_content_type') in ["movie","tvshow"]) }}
+
+- platform: template
+  sensors:
+    chromecast_playing_movie:
+      friendly_name: "Chromecast Playing Movie"
+      value_template: >-
+        {{ is_state('media_player.woonkamer', 'playing') 
+            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis"]
+            or state_attr('media_player.woonkamer','app_name') in ["Plex"]
+            and state_attr('media_player.woonkamer','media_content_type') in ["movie"]) }}
+
+- platform: template
+  sensors:
+    chromecast_playing_tvshow:
+      friendly_name: "Chromecast Playing TV Show"
+      value_template: >-
+        {{ is_state('media_player.woonkamer', 'playing') 
+            and state_attr('media_player.woonkamer','app_name') in ["Plex"]
+            and state_attr('media_player.woonkamer','media_content_type') in ["movie"] }}
+
+- platform: workday
+  country: NL
+  workdays: [mon, tue, wed, thu, fri]

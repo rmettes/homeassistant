@@ -1,92 +1,64 @@
   - name: Woonkamer Gedimd
     entities:
-      group.keuken_low:
+      light.keuken_low:
         state: on
         brightness: 75
         transition: 2
-      group.keuken_medium:
+      light.keuken_medium:
         state: off
-      group.hoge_tafel:
+      light.hoge_tafel:
         state: on
         brightness: 40
         transition: 2
-      group.zithoek:
+      light.lage_tafel:
         state: on
         brightness: 50
         transition: 2
       switch.tv_meubel:
         state: on
-  - name: Film kijken
+  - name: Woonkamer Donker
     entities:
-      group.keuken:
+      light.keuken_low:
         state: off
-      group.hoge_tafel:
-        state: off
-      group.zithoek:
-        state: off
-      switch.tv_meubel:
+      light.keuken_medium:
         state: off
       switch.keuken_werklicht:
         state: off
-      group.buiten_achter:
-        state: on
-        brightness: 10
-        transition: 15
-  - name: Serie kijken
-    entities:
-      group.keuken:
-        state: off
-      switch.keuken_werklicht:
-        state: off
-      group.hoge_tafel:
+      light.hoge_tafel:
         state: off
       light.zithoek:
         state: off
-      group.buiten_achter:
+      light.achtertuin:
         state: on
         brightness: 10
-        transition: 15
-  - name: Film pause
-    entities:
-      group.keuken_low:
-        state: on
-        brightness: 30
-        transition: 15
-      group.hoge_tafel:
-        state: on
-        brightness: 10
-        transition: 15
-      group.zithoek:
-        state: on
-        brightness: 40
-        transition: 15
-      switch.tv_meubel:
-        state: on
-      group.buiten_achter:
-        state: on
-        brightness: 100
         transition: 15
   - name: Buiten aan
     entities:
-      group.buiten_achter:
+      light.achtertuin:
         state: on
         brightness: 100
+      switch.flexschakelaar_2:
+        state: on
   - name: Buiten laag
     entities:
-      group.buiten:
+      light.achtertuin:
         state: on
         brightness: 10
   - name: Buiten uit
     entities:
-      group.buiten:
+      light.achtertuin:
+        state: off
+      switch.flexschakelaar_2:
         state: off
   - name: Woonkamer uit
     entities:
-      group.keuken:
+      light.keuken_low:
         state: off
-      group.hoge_tafel:
+      light.keuken_medium:
         state: off
-      group.zithoek:
+      light.hoge_tafel:
+        state: off
+      light.lage_tafel:
         state: off
       switch.tv_meubel:
         state: off
@@ -94,26 +66,26 @@
         state: off
   - name: Gang aan
     entities:
-      group.gang:
+      light.gang:
         state: on
         brightness: 60
   - name: Gang uit
     entities:
-      group.gang:
+      light.gang:
         state: off
   - name: Voordeur Laag
     entities:
-      group.voordeur:
+      light.voordeur:
         state: on
         brightness: 10
   - name: Voordeur Hoog
     entities:
-      group.voordeur:
+      light.voordeur:
         state: on
-        brightness: 100
+        brightness: 200
   - name: Voordeur Uit
     entities:
-      group.voordeur:
+      light.voordeur:
         state: off
   - name: PANIC
     entities:

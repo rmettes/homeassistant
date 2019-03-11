@@ -69,11 +69,6 @@ tradfri:
 tts:
   - platform: google
 
-binary_sensor:
-  - platform: workday
-    country: NL
-    workdays: [mon, tue, wed, thu, fri]
-
 # Flux
 switch:
   - platform: flux
@@ -96,6 +91,14 @@ notify:
     api_key: !secret messagebird_apikey
     sender: Dobby
 
+counter:
+  doorbel_today:
+    name: Deurbelletjes Vandaag
+    icon: mdi:bell-ring-outline
+    restore: false
+    initial: 0
+    step: 1
+    
 # DarkSky
 weather:
   - platform: darksky
@@ -111,7 +114,9 @@ google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
 
+light: !include light_groups.yaml
 sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
