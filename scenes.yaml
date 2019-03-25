@@ -37,8 +37,6 @@
       light.achtertuin:
         state: on
         brightness: 100
-      switch.flexschakelaar_2:
-        state: on
   - name: Buiten laag
     entities:
       light.achtertuin:
@@ -47,8 +45,6 @@
   - name: Buiten uit
     entities:
       light.achtertuin:
-        state: off
-      switch.flexschakelaar_2:
         state: off
   - name: Woonkamer uit
     entities:
