@@ -3,9 +3,16 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ (is_state('weather.dark_sky','clear') 
+        {{ (is_state('weather.dark_sky','clear-day') 
             and state_attr('sun.sun','elevation')|float < 7)
             or state_attr('sun.sun','elevation')|float < 3.5 }}
+
+- platform: template
+  sensors:
+    niceweather:
+      friendly_name: "Lekker Weer"
+      value_template: >-
+        {{ (state_attr('weather.dark_sky','temperature')|float > 18) }}
 
 - platform: template
   sensors:
