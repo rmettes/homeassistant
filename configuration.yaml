@@ -69,12 +69,12 @@ tradfri:
 tts:
   - platform: google
 
-# Flux
+# Circadian Lighting
+circadian_lighting:
+
 switch:
-  - platform: flux
-    disable_brightness_adjust: True
-    stop_colortemp: 1500
-    lights:
+  - platform: circadian_lighting
+    lights_ct:
       - light.zolder_1
       - light.zolder_2
 
@@ -98,7 +98,7 @@ counter:
     restore: false
     initial: 0
     step: 1
-    
+
 # DarkSky
 weather:
   - platform: darksky
