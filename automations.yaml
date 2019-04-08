@@ -341,3 +341,12 @@
       entity_id: counter.doorbel_today
     service: counter.reset
 
+- id: 'catchall'
+  alias: Zet alle dingen uit die perongeluk nog aanstaan
+  trigger:
+    platform: time
+    at: '11:00:00'
+  action:
+  - data:
+      entity_id: switch.flexschakelaar_1
+    service: switch.turn_off
