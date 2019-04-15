@@ -345,8 +345,8 @@
   alias: Zet alle dingen uit die perongeluk nog aanstaan
   trigger:
     platform: time
-    at: '11:00:00'
+    at: '23:00:00'
   action:
   - data:
-      entity_id: switch.flexschakelaar_1
+      entity_id: switch.flexschakelaar_2
     service: switch.turn_off
