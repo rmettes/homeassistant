@@ -1,4 +1,3 @@
-
 """
 Circadian Lighting Switch for Home-Assistant.
 """
