@@ -115,11 +115,11 @@ google:
   client_secret: !secret google_client_secret
 
 # Ecovacs
-ecovacs:
-  username: !secret ecovacs_username
-  password: !secret ecovacs_password
-  country: !secret ecovacs_country
-  continent: !secret ecovacs_continent
+# ecovacs:
+#   username: !secret ecovacs_username
+#   password: !secret ecovacs_password
+#   country: !secret ecovacs_country
+#   continent: !secret ecovacs_continent
 
 light: !include light_groups.yaml
 sensor: !include sensors.yaml
