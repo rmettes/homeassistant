@@ -3,9 +3,7 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ (is_state('weather.dark_sky','clear-day') 
-            and state_attr('sun.sun','elevation')|float < 7)
-            or state_attr('sun.sun','elevation')|float < 3.5 }}
+        {{ as_timestamp((state_attr('sun.sun','next_dusk'))) < as_timestamp(now()) }}
 
 - platform: template
   sensors:
