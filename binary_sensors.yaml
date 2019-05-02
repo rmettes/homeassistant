@@ -3,7 +3,7 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ as_timestamp((state_attr('sun.sun','next_dusk'))) < as_timestamp(now()) }}
+        {{ as_timestamp((state_attr('sun.sun','next_dusk'))) > as_timestamp((state_attr('sun.sun','next_dawn'))) }}
 
 - platform: template
   sensors:
