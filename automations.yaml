@@ -2,15 +2,18 @@
   alias: Melding - Bak buitenzetten
   trigger:
     platform: time
-    at: '07:32:00'
+    at: 07:32:00
   condition:
   - condition: template
-    value_template: "
-{{ ('Gft' in states.calendar.inzamelkalender_hvc.attributes.message or 'Plastic' in states.calendar.inzamelkalender_hvc.attributes.message) and now().strftime('%D') == strptime(states.calendar.inzamelkalender_hvc.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%D') }}"
+    value_template: ' {{ (''Gft'' in states.calendar.inzamelkalender_hvc.attributes.message
+      or ''Plastic'' in states.calendar.inzamelkalender_hvc.attributes.message) and
+      now().strftime(''%D'') == strptime(states.calendar.inzamelkalender_hvc.attributes.start_time,
+      ''%Y-%m-%d %H:%M:%S'').strftime(''%D'') }}'
   action:
   - data:
-      target: !secret telephone_rick
-      message: 'Vergeet je niet de {{ states.calendar.inzamelkalender_hvc.attributes.message }} bak buiten te zetten?'
+      target: '+31613328520'
+      message: Vergeet je niet de {{ states.calendar.inzamelkalender_hvc.attributes.message
+        }} bak buiten te zetten?
     service: notify.sms
 - id: asoijeunakaispasdli823
   alias: Melding - Later thuis
@@ -19,17 +22,16 @@
     at: '17:15:00'
   condition:
   - condition: state
-    entity_id: device_tracker.rick_mettes
-    state: 'Paramelt'
+    entity_id: person.rick
+    state: Rick Werk
   - condition: state
-    entity_id: device_tracker.mayla
-    state: 'home'
+    entity_id: person.mayla
+    state: home
   action:
   - data:
-      target: !secret telephone_mayla
-      message: 'Rick is later thuis, hij is nu  nog op t werk'
+      target: '+31625522205'
+      message: Rick is later thuis, hij is nu  nog op t werk
     service: notify.sms
-
 - id: alsdflkyedk
   alias: Iedereen Weg - Lichten Uit
   trigger:
@@ -54,15 +56,14 @@
   - data:
       entity_id: scene.gang_uit
     service: scene.turn_on
-
 - id: oijhfkjdnckasdfjlkjd
   alias: Voordeur hoog
   trigger:
-  - entity_id: device_tracker.mayla
+  - entity_id: person.mayla
     from: not_home
     platform: state
     to: home
-  - entity_id: device_tracker.rick_mettes
+  - entity_id: person.rick
     from: not_home
     platform: state
     to: home
@@ -73,11 +74,11 @@
 - id: oijhfkjdnckd
   alias: Thuis Komen
   trigger:
-  - entity_id: device_tracker.mayla
+  - entity_id: person.mayla
     from: not_home
     platform: state
     to: home
-  - entity_id: device_tracker.rick_mettes
+  - entity_id: person.rick
     from: not_home
     platform: state
     to: home
@@ -128,7 +129,6 @@
   - data:
       entity_id: scene.voordeur_laag
     service: scene.turn_on
-
 - id: poijnjhyt
   alias: Lichten aan bij zonsondergang
   trigger:
@@ -155,7 +155,6 @@
   - data:
       entity_id: scene.woonkamer_gedimd
     service: scene.turn_on
-
 - id: ijiuywekjf
   alias: Buitenverlichting aan bij zonsondergang
   trigger:
@@ -170,17 +169,15 @@
   - data:
       entity_id: scene.buiten_aan
     service: scene.turn_on
-
 - id: qwernmd
   alias: Buitenverlichting uit om 1 uur
   trigger:
     platform: time
-    at: '01:00:00'
+    at: 01:00:00
   action:
   - data:
       entity_id: scene.buiten_uit
     service: scene.turn_on
-
 - id: qwueio
   alias: Start Film
   trigger:
@@ -195,7 +192,6 @@
   - data:
       entity_id: scene.buiten_laag
     service: scene.turn_on
-
 - id: qiionaluenflsdi
   alias: Start Serie
   trigger:
@@ -207,7 +203,6 @@
   - data:
       entity_id: scene.woonkamer_donker
     service: scene.turn_on
-
 - id: io8uafj
   alias: Pauze Chromecast
   trigger:
@@ -222,7 +217,6 @@
   - data:
       entity_id: scene.buiten_aan
     service: scene.turn_on
-
 - id: oiasdflkjasd
   alias: Schakel keuken werklicht in
   trigger:
@@ -238,7 +232,6 @@
   - data:
       entity_id: switch.keuken_werklicht
     service: switch.turn_on
-
 - id: asdfi3whbfalif39d
   alias: Schakel keuken werklicht uit
   trigger:
@@ -254,9 +247,8 @@
   - data:
       entity_id: switch.keuken_werklicht
     service: switch.turn_off
-
 - id: oiasdasdflflkjasd
-  alias: Schakel Hue Go in
+  alias: Schakel Hue in
   trigger:
   - entity_id: light.zithoek
     from: 'off'
@@ -264,10 +256,13 @@
     to: 'on'
   action:
   - data:
-      entity_id: light.hue_go
+      entity_id: light.huego
+    service: light.turn_on
+  - data:
+      entity_id: light.lightstrip_tv
     service: light.turn_on
 - id: asdfi3whbfaasdlfjlif39d
-  alias: Schakel Hue Go uit
+  alias: Schakel Hue uit
   trigger:
   - entity_id: light.zithoek
     from: 'on'
@@ -275,10 +270,12 @@
     to: 'off'
   action:
   - data:
-      entity_id: light.hue_go
+      entity_id: light.huego
     service: light.turn_off
-
-- id: 'dingdonglicht'
+  - data:
+      entity_id: light.lightstrip_tv
+    service: light.turn_off
+- id: dingdonglicht
   alias: Voordeur hoog na aanbellen
   trigger:
   - entity_id: binary_sensor.deurbel
@@ -292,8 +289,7 @@
   - data:
       entity_id: counter.doorbel_today
     service: counter.increment
-
-- id: 'dingdongfilm'
+- id: dingdongfilm
   alias: Film op pauze na aanbellen
   trigger:
   - entity_id: binary_sensor.deurbel
@@ -308,8 +304,7 @@
   - data:
       entity_id: media_player.woonkamer
     service: media_player.media_pause
-
-- id: 'inhetdonkeraan'
+- id: inhetdonkeraan
   alias: Automations in het donker aan
   trigger:
   - entity_id: binary_sensor.dusk
@@ -319,8 +314,7 @@
   action:
     service: homeassistant.turn_on
     entity_id: group.in_het_donker
-
-- id: 'inhetdonkeruit'
+- id: inhetdonkeruit
   alias: Automations in het donker uit
   trigger:
   - entity_id: binary_sensor.dusk
@@ -330,18 +324,16 @@
   action:
     service: homeassistant.turn_off
     entity_id: group.in_het_donker
-
-- id: 'resetforday'
+- id: resetforday
   alias: Reset dagelijkse automations
   trigger:
     platform: time
-    at: '01:00:00'
+    at: 01:00:00
   action:
   - data:
       entity_id: counter.doorbel_today
     service: counter.reset
-
-- id: 'catchall'
+- id: catchall
   alias: Zet alle dingen uit die perongeluk nog aanstaan
   trigger:
     platform: time
@@ -350,3 +342,21 @@
   - data:
       entity_id: switch.flexschakelaar_2
     service: switch.turn_off
+- id: '1561896723304'
+  alias: Lichten uit wanneer licht genoeg
+  trigger:
+  - entity_id: group.in_het_donker
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: light.hoge_tafel
+    state: 'on'
+  - condition: state
+    entity_id: light.lage_tafel
+    state: 'on'
+  action:
+  - data:
+      entity_id: scene.woonkamer_uit
+    service: scene.turn_on

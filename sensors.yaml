@@ -1,0 +1,5 @@
+- platform: statistics
+  entity_id: sensor.bh1750_illuminance
+  name: lux_woonkamer
+  max_age:
+    minutes: 30

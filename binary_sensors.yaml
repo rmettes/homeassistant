@@ -3,8 +3,7 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ as_timestamp((state_attr('sun.sun','next_dusk'))) > as_timestamp((state_attr('sun.sun','next_dawn'))) }}
-
+        {{ states("sensor.lux_woonkamer_mean")|float < 40 }}
 - platform: template
   sensors:
     niceweather:

@@ -83,6 +83,23 @@ device_tracker:
   - platform: life360
     username: !secret life360_user
     password: !secret life360_password
+  - platform: ping
+    consider_home: 30
+    hosts:
+      phone_mayla: 192.168.0.120
+      phone_rick: 192.168.0.121
+
+person:
+  - name: Mayla
+    id: mayla
+    device_trackers:
+      - device_tracker.mayla
+      - device_tracker.phone_mayla
+  - name: Rick
+    id: rick
+    device_trackers:
+      - device_tracker.rick_mettes
+      - device_tracker.phone_rick
 
 # MessageBird
 notify:
@@ -116,10 +133,10 @@ google:
 
 # Ecovacs
 # ecovacs:
-#   username: !secret ecovacs_username
-#   password: !secret ecovacs_password
-#   country: !secret ecovacs_country
-#   continent: !secret ecovacs_continent
+#  username: !secret ecovacs_username
+#  password: !secret ecovacs_password
+#  country: !secret ecovacs_country
+#  continent: !secret ecovacs_continent
 
 light: !include light_groups.yaml
 sensor: !include sensors.yaml
