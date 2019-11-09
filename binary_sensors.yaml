@@ -3,7 +3,7 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ states("sensor.lux_woonkamer_mean")|float < 55 }}
+        {{ states("sensor.lux_woonkamer")|float < 55 }}
 - platform: template
   sensors:
     niceweather:
