@@ -17,3 +17,17 @@ homecoming:
   - data:
       entity_id: scene.gang_uit
     service: scene.turn_on
+
+sintemaarten:
+  alias: "Sinte Maarten"
+  sequence:
+# Zet het licht bij de voordeur uit
+  - data:
+      entity_id: scene.voordeur_uit
+    service: scene.turn_on
+# Wacht 30 seconden
+  - delay: 00:20:00
+# Zet het licht bij de voordeur weer aan
+  - data:
+      entity_id: scene.voordeur_laag
+    service: scene.turn_on

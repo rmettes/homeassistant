@@ -368,7 +368,7 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: light.hoge_tafel
+    entity_id: light.hoge_taf
     state: 'on'
   - condition: state
     entity_id: light.lage_tafel
@@ -383,5 +383,16 @@
     - platform: time_pattern
       minutes: '/5'
   action:
-    - service: homeassistant.update_entity
-      entity_id: sensor.woonkamer_scene
+  - service: homeassistant.update_entity
+    entity_id: sensor.woonkamer_scene
+- id: sintemaartenmikmak
+  alias: Saint Martens Party
+  trigger:
+  - entity_id: binary_sensor.deurbel
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.sintemaarten
