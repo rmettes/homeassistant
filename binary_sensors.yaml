@@ -3,7 +3,7 @@
     dusk:
       friendly_name: "Schemer"
       value_template: >-
-        {{ states("sensor.lux_woonkamer_mean")|float < 40 }}
+        {{ states("sensor.lux_woonkamer_mean")|float < 55 }}
 - platform: template
   sensors:
     niceweather:
@@ -17,7 +17,7 @@
       friendly_name: "Chromecast Playing"
       value_template: >-
         {{ is_state('media_player.woonkamer', 'playing') 
-            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis"]
+            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis","Disney+"]
             or state_attr('media_player.woonkamer','app_name') in ["Plex"]
             and state_attr('media_player.woonkamer','media_content_type') in ["movie","tvshow"]) }}
 
@@ -27,7 +27,7 @@
       friendly_name: "Chromecast Playing Movie"
       value_template: >-
         {{ is_state('media_player.woonkamer', 'playing') 
-            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis"]
+            and (state_attr('media_player.woonkamer','app_name') in ["Netflix","Pathé Thuis","Disney+"]
             or state_attr('media_player.woonkamer','app_name') in ["Plex"]
             and state_attr('media_player.woonkamer','media_content_type') in ["movie"]) }}
 

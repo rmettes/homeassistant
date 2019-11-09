@@ -2,8 +2,8 @@ homecoming:
   alias: "Welkom thuis"
   sequence:
 # Zet de lichten in huis aan
-  - data:
-      entity_id: scene.woonkamer_gedimd
+  - data_template:
+      entity_id: '{{ states("sensor.woonkamer_scene") }}'
     service: scene.turn_on
   - data:
       entity_id: scene.gang_aan

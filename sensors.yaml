@@ -2,4 +2,20 @@
   entity_id: sensor.bh1750_illuminance
   name: lux_woonkamer
   max_age:
-    minutes: 30
+    minutes: 20
+- platform: template
+  sensors:
+    woonkamer_scene:
+      friendly_name: "Woonkamer Scene"
+      value_template: >-
+        {% if is_state("binary_sensor.dusk", "on") %}
+        {% if now().hour < 19 or now().hour < 6 %}
+        scene.woonkamer_intermediate
+        {% elif now().hour < 22 %}
+        scene.woonkamer_medium
+        {%else%}
+        scene.woonkamer_low
+        {%endif %}
+        {%else%}
+        scene.woonkamer_high
+        {%endif %}

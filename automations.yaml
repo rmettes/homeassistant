@@ -129,6 +129,23 @@
   - data:
       entity_id: scene.voordeur_laag
     service: scene.turn_on
+- id: fiwe8i93kdjf
+  alias: Switch scene
+  trigger:
+  - entity_id: sensor.woonkamer_scene
+    platform: state
+  - entity_id: light.hoge_tafel
+    platform: state
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.hoge_tafel
+    state: 'on'
+  action:
+  - data_template:
+      entity_id: '{{ states("sensor.woonkamer_scene") }}'
+    service: scene.turn_on
 - id: poijnjhyt
   alias: Lichten aan bij zonsondergang
   trigger:
@@ -152,8 +169,8 @@
   - after: '12:00:00'
     condition: time
   action:
-  - data:
-      entity_id: scene.woonkamer_gedimd
+  - data_template:
+      entity_id: '{{ states("sensor.woonkamer_scene") }}'
     service: scene.turn_on
 - id: ijiuywekjf
   alias: Buitenverlichting aan bij zonsondergang
@@ -211,8 +228,8 @@
     platform: state
     to: 'off'
   action:
-  - data:
-      entity_id: scene.woonkamer_gedimd
+  - data_template:
+      entity_id: '{{ states("sensor.woonkamer_scene") }}'
     service: scene.turn_on
   - data:
       entity_id: scene.buiten_aan
@@ -360,3 +377,11 @@
   - data:
       entity_id: scene.woonkamer_uit
     service: scene.turn_on
+- id: afkuasughef23ihf
+  alias: Scene Sensor Update
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+  action:
+    - service: homeassistant.update_entity
+      entity_id: sensor.woonkamer_scene

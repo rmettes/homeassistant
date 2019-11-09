@@ -1,19 +1,65 @@
-  - name: Woonkamer Gedimd
+  - name: Woonkamer High
+    entities:
+      light.keuken_low:
+        state: on
+        brightness: 255
+        transition: 100
+      light.hoge_tafel:
+        state: on
+        brightness: 255
+        transition: 100
+      light.lage_tafel:
+        state: on
+        brightness: 100
+        transition: 100
+      switch.tv_meubel:
+        state: on
+  - name: Woonkamer Intermediate
+    entities:
+      light.keuken_low:
+        state: on
+        brightness: 150
+        transition: 100
+      light.hoge_tafel:
+        state: on
+        brightness: 127
+        transition: 100
+      light.lage_tafel:
+        state: on
+        brightness: 150
+        transition: 100
+      switch.tv_meubel:
+        state: on
+  - name: Woonkamer Medium
     entities:
       light.keuken_low:
         state: on
         brightness: 75
-        transition: 2
-      light.keuken_medium:
-        state: off
+        transition: 100
       light.hoge_tafel:
         state: on
         brightness: 40
-        transition: 2
+        transition: 80
       light.lage_tafel:
         state: on
         brightness: 50
-        transition: 2
+        transition: 100
+      switch.tv_meubel:
+        state: on
+  - name: Woonkamer Low
+    entities:
+      light.keuken_low:
+        state: on
+        brightness: 10
+        transition: 100
+      light.hoge_tafel:
+        state: on
+        brightness: 10
+        transition: 100
+      light.lage_tafel:
+        state: on
+        brightness: 10
+        transition: 100
       switch.tv_meubel:
         state: on
   - name: Woonkamer Donker
