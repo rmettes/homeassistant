@@ -209,6 +209,9 @@
   - data:
       entity_id: scene.buiten_laag
     service: scene.turn_on
+  - data:
+      entity_id: script.startmovie
+    service: script.turn_on 
 - id: qiionaluenflsdi
   alias: Start Serie
   trigger:
@@ -264,6 +267,15 @@
   - data:
       entity_id: switch.keuken_werklicht
     service: switch.turn_off
+- id: kerstboomaan
+  alias: Schakel Kerstboom
+  trigger:
+  - entity_id: light.zithoek
+    platform: state
+  action:
+  - service_template: switch.turn_{{ states("light.zithoek") }} 
+    data: 
+      entity_id: switch.flexschakelaar_1
 - id: oiasdasdflflkjasd
   alias: Schakel Hue in
   trigger:

@@ -1,33 +1,33 @@
 homecoming:
-  alias: "Welkom thuis"
+  alias: Welkom thuis
   sequence:
-# Zet de lichten in huis aan
   - data_template:
       entity_id: '{{ states("sensor.woonkamer_scene") }}'
     service: scene.turn_on
   - data:
       entity_id: scene.gang_aan
     service: scene.turn_on
-# Wacht 20 minuten
   - delay: 00:20:00
-# Zet de boel weer uit
   - data:
       entity_id: scene.woonkamer_uit
     service: scene.turn_on
   - data:
       entity_id: scene.gang_uit
     service: scene.turn_on
-
-sintemaarten:
-  alias: "Sinte Maarten"
+startmovie:
+  alias: Start Film
   sequence:
-# Zet het licht bij de voordeur uit
+  - delay: 00:00:15
+  - data:
+      entity_id: light.lightstrip_tv
+    service: light.turn_on
+sintemaarten:
+  alias: Sinte Maarten
+  sequence:
   - data:
       entity_id: scene.voordeur_uit
     service: scene.turn_on
-# Wacht 30 seconden
-  - delay: 00:20:00
-# Zet het licht bij de voordeur weer aan
+  - delay: 00:00:30
   - data:
       entity_id: scene.voordeur_laag
     service: scene.turn_on
