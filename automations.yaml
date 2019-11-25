@@ -11,7 +11,7 @@
       ''%Y-%m-%d %H:%M:%S'').strftime(''%D'') }}'
   action:
   - data:
-      target: '+31613328520'
+      target: !secret telephone_rick
       message: Vergeet je niet de {{ states.calendar.inzamelkalender_hvc.attributes.message
         }} bak buiten te zetten?
     service: notify.sms
@@ -29,7 +29,7 @@
     state: home
   action:
   - data:
-      target: '+31625522205'
+      target: !secret telephone_mayla
       message: Rick is later thuis, hij is nu  nog op t werk
     service: notify.sms
 - id: alsdflkyedk
@@ -276,34 +276,17 @@
   - service_template: switch.turn_{{ states("light.zithoek") }} 
     data: 
       entity_id: switch.flexschakelaar_1
-- id: oiasdasdflflkjasd
-  alias: Schakel Hue in
+- id: huehueheuhue
+  alias: Schakel Hue
   trigger:
   - entity_id: light.zithoek
-    from: 'off'
     platform: state
-    to: 'on'
   action:
-  - data:
-      entity_id: light.huego
-    service: light.turn_on
-  - data:
-      entity_id: light.lightstrip_tv
-    service: light.turn_on
-- id: asdfi3whbfaasdlfjlif39d
-  alias: Schakel Hue uit
-  trigger:
-  - entity_id: light.zithoek
-    from: 'on'
-    platform: state
-    to: 'off'
-  action:
-  - data:
-      entity_id: light.huego
-    service: light.turn_off
-  - data:
-      entity_id: light.lightstrip_tv
-    service: light.turn_off
+  - service_template: light.turn_{{ states("light.zithoek") }} 
+    data: 
+      entity_id:
+      - light.huego
+      - light.lightstrip_tv
 - id: dingdonglicht
   alias: Voordeur hoog na aanbellen
   trigger:
