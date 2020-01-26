@@ -127,6 +127,7 @@ cast:
   media_player:
     - host: !secret chromecast_woonkamer_ip
     - host: !secret jbl_speaker_ip
+    - host: !secret google_nest_mini_ip
 
 # Google
 google:
