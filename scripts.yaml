@@ -19,7 +19,9 @@ startmovie:
   sequence:
   - delay: 00:00:15
   - data:
-      entity_id: light.lightstrip_tv
+      entity_id:
+        - light.lightstrip_tv
+        - light.huego
     service: light.turn_on
 sintemaarten:
   alias: Sinte Maarten
