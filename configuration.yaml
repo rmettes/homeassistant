@@ -71,6 +71,7 @@ tradfri:
 # Text to speech
 tts:
   - platform: google_translate
+    language: 'nl'
     service_name: google_say
 
 # Life360 Activity Tracker
