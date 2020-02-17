@@ -11,10 +11,9 @@
       ''%Y-%m-%d %H:%M:%S'').strftime(''%D'') }}'
   action:
   - data:
-      target: !secret telephone_rick
       message: Vergeet je niet de {{ states.calendar.inzamelkalender_hvc.attributes.message
         }} bak buiten te zetten?
-    service: notify.sms
+    service: notify.signal
 - id: asoijeunakaispasdli823
   alias: Melding - Later thuis
   trigger:
@@ -29,9 +28,8 @@
     state: home
   action:
   - data:
-      target: !secret telephone_mayla
       message: Rick is later thuis, hij is nu  nog op t werk
-    service: notify.sms
+    service: notify.signal_mayla
 - id: alsdflkyedk
   alias: Iedereen Weg - Lichten Uit
   trigger:
@@ -99,6 +97,9 @@
   - service: script.turn_on
     data:
       entity_id: script.homecoming
+  - service: notify.signal
+    data:
+      message: "Er is iemand thuis gekomen! Ik doe lichten aan :-)"
 - id: cancelhomecoming
   alias: Cancel Homecoming AutoOff
   trigger:
@@ -306,6 +307,9 @@
       entity_id: media_player.google_mini
       media_content_id: http://www.orangefreesounds.com/wp-content/uploads/2015/02/Funny-doorbell-sound-3.mp3
       media_content_type: 'audio/mp3'
+  - service: notify.signal
+    data:
+      message: "Er is aangebeld!"
 - id: dingdongfilm
   alias: Film op pauze na aanbellen
   trigger:

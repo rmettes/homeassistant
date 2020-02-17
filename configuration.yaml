@@ -109,6 +109,25 @@ notify:
     platform: message_bird
     api_key: !secret messagebird_apikey
     sender: Dobby
+  - name: signal_rick
+    platform: signal_messenger
+    url: "http://127.0.0.1:8081"
+    number: !secret telephone_dobby
+    recipients:
+      - !secret telephone_rick
+  - name: signal_mayla
+    platform: signal_messenger
+    url: "http://127.0.0.1:8081"
+    number: !secret telephone_dobby
+    recipients:
+      - !secret telephone_mayla
+  - name: signal
+    platform: signal_messenger
+    url: "http://127.0.0.1:8081"
+    number: !secret telephone_dobby
+    recipients:
+      - !secret telephone_rick
+      - !secret telephone_mayla
 
 counter:
   doorbel_today:
